@@ -1,7 +1,7 @@
 YouPi
 =====
 
-Youpi is a Youtube looper. It lets you loop all or part of a youtube video endlessly.
+YouPi is a Youtube looper. It lets you loop all or part of a youtube video endlessly.
 
 http://jacklehamster.github.io/youpi
 
