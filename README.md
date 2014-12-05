@@ -24,7 +24,8 @@ ex: http://jacklehamster.github.io/youpi/?videoID=ptFt1ffCFf0&start=1:02&end=1:1
 
 <li>
 <b>You can use this in an iframe:</b><br>
-ex: <code>&lt;iframe src="http://jacklehamster.github.io/youpi/?videoID=vbU2VXGjQj8&lstart=4:24&end=4:29.9"&gt;&lt;/iframe&gt;</code>
+ex: <br>
+<code>&lt;iframe src="http://jacklehamster.github.io/youpi/?videoID=vbU2VXGjQj8&lstart=4:24&end=4:29.9"&gt;&lt;/iframe&gt;</code>
 </li>
 
 </ul>
