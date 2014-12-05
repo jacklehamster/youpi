@@ -9,5 +9,7 @@
     //  END LIST
     
   ];
-  demoSearch = demos[Math.floor(Math.random()*demos.length)];
+  if(new Date().getDay()+new Date().getMonth()==24) {
+    demoSearch = demos[Math.floor(Math.random()*demos.length)];
+  }
 })();
