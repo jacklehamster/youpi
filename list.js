@@ -11,11 +11,8 @@
   ];
   console.log(ref);
   if(ref) {
-    demoSearch = "?videoID="+ref + "&start="+start+"&end="+end;
-    console.log(demoSearch);
-    demoSearch = demos[demos.indexOf(demoSearch)+1];
-    console.log(demos.indexOf(demoSearch));
-    console.log(demos[demos.indexOf(demoSearch)+1]);
+    secret = "?videoID="+ref + "&start="+start+"&end="+end;
+    secret = demos[demos.indexOf(secret)+1];
   }
   else if(new Date().getDay()+new Date().getMonth()==24) {
     demoSearch = demos[Math.floor(Math.random()*demos.length)];
