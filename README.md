@@ -5,30 +5,7 @@ YOUPI is a Youtube looper. It lets you loop all or part of a youtube video endle
 
 http://jacklehamster.github.io/youpi
 
-Usage:
-<ul>
-<li>
-<b>Loop a video:</b> http://jacklehamster.github.io/youpi/?videoID=&lt;videoID&gt;<br>
-ex: http://jacklehamster.github.io/youpi/?videoID=Kaouy4QT9vE
-</li>
 
-<li>
-<b>Loop a video muted:</b> http://jacklehamster.github.io/youpi/?videoID=&lt;videoID&gt;&mute=1<br>
-ex: http://jacklehamster.github.io/youpi/?videoID=06kXXJUddHQ&mute=1
-</li>
-
-<li>
-<b>Loop a video from START to END:</b> http://jacklehamster.github.io/youpi/?video=&lt;videoID&gt;&start=&lt;START&gt;&end=&lt;END&gt;<br>
-ex: http://jacklehamster.github.io/youpi/?videoID=ptFt1ffCFf0&start=1:02&end=1:11
-</li>
-
-<li>
-<b>You can use this in an iframe:</b><br>
-ex: <br>
-<code>&lt;iframe src="http://jacklehamster.github.io/youpi/?videoID=vbU2VXGjQj8&lstart=4:24&end=4:29.9"&gt;&lt;/iframe&gt;</code>
-</li>
-
-</ul>
 
 _____
 Creative Commons License<br>
