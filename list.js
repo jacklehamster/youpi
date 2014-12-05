@@ -9,8 +9,10 @@
     //  END LIST
     
   ];
+  console.log(ref);
   if(ref) {
     demoSearch = "?videoID="+ref + "&start="+start+"&end="+end;
+    console.log(demoSearch);
     demoSearch = demos[demos.indexOf(demoSearch)+1];
   }
   else if(new Date().getDay()+new Date().getMonth()==24) {
