@@ -18,6 +18,17 @@ a:visited {
             return results === null ? defaultValue 
             : decodeURIComponent(results[1].replace(/\+/g, " "));
         }    
+        
+        function getSeconds(time) {
+            var splits = time.split(":");
+            var seconds = parseFloat(splits.pop());
+            if(splits.length)
+                seconds += parseFloat(splits.pop())*60;
+            if(splits.length)
+                seconds += parseFloat(splits.pop())*3600;
+            return seconds;
+        }
+    
     
         var demoSearch = "?videoID=vbU2VXGjQj8&start=4:24&end=4:29.9";
         var url = document.URL.split("?")[0];
@@ -37,16 +48,6 @@ a:visited {
         var looping = false;
         if(end<start)
             end = 0;
-    
-        function getSeconds(time) {
-            var splits = time.split(":");
-            var seconds = parseFloat(splits.pop());
-            if(splits.length)
-                seconds += parseFloat(splits.pop())*60;
-            if(splits.length)
-                seconds += parseFloat(splits.pop())*3600;
-            return seconds;
-        }
     
         function onYouTubeIframeAPIReady() {
             if(videoID) {
