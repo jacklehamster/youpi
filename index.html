@@ -12,19 +12,20 @@ a:visited {
 </style>    
 <script>
         var demoSearch = "?videoID=vbU2VXGjQj8&start=4:24&end=4:29.9";
-</script>
-<script src="list.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
         var url = document.URL.split("?")[0];
         var videoID = getParameterByName(location.search,"videoID");
         var start = getSeconds(getParameterByName(location.search,"start","0"));
         var end = getSeconds(getParameterByName(location.search,"end","0"));
         var mute = getParameterByName(location.search,"mute");
-        var demoVideo = getParameterByName(location.search,"ref",getParameterByName(demoSearch,"videoID")), 
-            demoStart = getParameterByName(location.search,"start",getParameterByName(demoSearch,"start")), 
-            demoEnd = getParameterByName(location.search,"end",getParameterByName(demoSearch,"end"));
-    
+        var secret = null;
+        var demoVideo = getParameterByName(location.search,"ref",getParameterByName(demoSearch,"videoID"));
+        var demoStart = getParameterByName(location.search,"start",getParameterByName(demoSearch,"start")); 
+        var demoEnd = getParameterByName(location.search,"end",getParameterByName(demoSearch,"end"));
+</script>
+<script src="list.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+
         var looping = false;
         if(end<start)
             end = 0;
@@ -80,6 +81,8 @@ a:visited {
                 document.body.style.margin = "5px";
                 document.getElementById("demoframe").src = 
                     "?videoID="+demoVideo+"&start="+demoStart+"&end="+demoEnd+"&mute="+(mute=='0'?0:1);
+                if(secret)
+                    document.getElementById("youpi").href = secret;
             }
         }
     
