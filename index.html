@@ -11,6 +11,14 @@ a:visited {
 
 </style>    
 <script>
+        function getParameterByName(search,name,defaultValue) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(search);
+            return results === null ? defaultValue 
+            : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }    
+    
         var demoSearch = "?videoID=vbU2VXGjQj8&start=4:24&end=4:29.9";
         var url = document.URL.split("?")[0];
         var videoID = getParameterByName(location.search,"videoID");
@@ -39,14 +47,6 @@ a:visited {
                 seconds += parseFloat(splits.pop())*3600;
             return seconds;
         }
-    
-        function getParameterByName(search,name,defaultValue) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(search);
-            return results === null ? defaultValue 
-            : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }    
     
         function onYouTubeIframeAPIReady() {
             if(videoID) {
