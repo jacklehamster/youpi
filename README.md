@@ -24,10 +24,9 @@ ex: http://jacklehamster.github.io/youpi/?videoID=ptFt1ffCFf0&start=1:02&end=1:1
 
 <li>
 <b>You can use this in an iframe:</b><br>
-ex: <iframe src="http://jacklehamster.github.io/youpi/?videoID=vbU2VXGjQj8&lstart=4:24&end=4:29.9"></iframe>
+ex: <code>&lt;iframe src="http://jacklehamster.github.io/youpi/?videoID=vbU2VXGjQj8&lstart=4:24&end=4:29.9"&gt;&lt;/iframe&gt;</code>
 </li>
 
 </ul>
 Creative Commons License<br>
-Youpi by jacklehamster is licensed under a Creative Commons Attribution 4.0 International License.<br> https://creativecommons.org/licenses/by/4.0/<br>
-Based on a work at https://github.com/jacklehamster/youpi.<br>
+Youpi by jacklehamster is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br> Based on a work at https://github.com/jacklehamster/youpi.<br>
