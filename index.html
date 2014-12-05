@@ -45,6 +45,9 @@ a:visited {
         var demoVideo = getParameterByName(location.search,"ref",getParameterByName(demoSearch,"videoID"));
         var demoStart = getParameterByName(location.search,"start",getParameterByName(demoSearch,"start")); 
         var demoEnd = getParameterByName(location.search,"end",getParameterByName(demoSearch,"end"));
+        var demoURL = url+"?videoID="+demoVideo+"&start="+demoStart+"&demoEnd="+demoEnd;
+        var tweet = "https://twitter.com/intent/tweet?hashtags=YOUPI&url="+encodeURIComponent(demoURL);
+
 
         var looping = false;
         if(end<start)
@@ -78,7 +81,8 @@ a:visited {
                     .split("%URL").join(url)
                     .split("%DEMOVIDEO").join(demoVideo)
                     .split("%DEMOSTART").join(demoStart)
-                    .split("%DEMOEND").join(demoEnd);
+                    .split("%DEMOEND").join(demoEnd)
+                    .split("%TWEET").join(tweet);
                 instructions.style.display="";
                 document.body.style.margin = "5px";
                 document.getElementById("demoframe").src = 
@@ -139,7 +143,9 @@ a:visited {
     <li><b>You can use this in an iframe:</b><br>
         <i>ex: <pre>&lt;iframe src="<a href="?videoID=%DEMOVIDEO&start=%DEMOSTART&end=%DEMOEND">%URL?videoID=%DEMOVIDEO&amp;start=%DEMOSTART&amp;end=%DEMOEND</a>"&gt;<br>&lt;/iframe&gt;</pre></i><br>
         <iframe scrolling="no" id="demoframe" style="overflow:hidden"></iframe>
-    </li>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://http://jacklehamster.github.io/youpi" data-via="jacklehamster" data-hashtags="YOUPI">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</li>
     </ul>
     <h6>
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Youpi</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">jacklehamster</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jacklehamster/youpi" rel="dct:source">https://github.com/jacklehamster/youpi</a>.    
