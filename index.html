@@ -90,6 +90,7 @@ a:visited {
                     "?videoID="+demoVideo+"&start="+demoStart+"&end="+demoEnd+"&mute="+(mute=='0'?0:1);
                 if(secret)
                     document.getElementById("youpi").href = secret;
+                setTweet();
             }
         }
     
@@ -133,7 +134,7 @@ function setTweet() {
 </script>
 
 <div id="instructions" style="display:none">
-    <h2>YOUPI <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></h2>
+    <h2>YOUPI <a href="https://twitter.com/share" class="twitter-share-button"></a></h2>
     
     <h3>USAGE:</h3>
     <ul>
