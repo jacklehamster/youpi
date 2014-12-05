@@ -33,6 +33,7 @@ a:visited {
         var demoSearch = "?videoID=vbU2VXGjQj8&start=4:24&end=4:29.9";
         var url = document.URL.split("?")[0];
         var videoID = getParameterByName(location.search,"videoID");
+        var ref = getParameterByName(location.search,"ref");
         var start = getSeconds(getParameterByName(location.search,"start","0"));
         var end = getSeconds(getParameterByName(location.search,"end","0"));
         var mute = getParameterByName(location.search,"mute");
