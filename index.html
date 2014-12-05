@@ -142,11 +142,25 @@ function setTweet() {
 <ul>
 <li>Step1: Find video on <a target="_blank" href="http://www.youtube.com">YouTube</a></li>
 <li>Step2: Look for a part you really like</li>
-<li>Step3: Pass the <input type='text' size=10 value='YOUTUBEID'></input>, 
-<input type='text' size=10 value='START'></input> and 
-<input type='text' size=10 value='END'></input> to YOUPI and let it loop that part forever</li>
+<script>
+    function updateLink() {
+        var videoID = document.getElementById("input_videoID").value;
+        var start = document.getElementById("start_videoID").value;
+        var end = document.getElementById("end_videoID").value;
+        
+        document.getElementById("videoID").innerHTML = videoID;
+        document.getElementById("start").innerHTML = start;
+        document.getElementById("end").innerHTML = end;
+        document.getElementById("link").href = url +"?videoID=" + videoID + "&start="+start +"&end="+end;
+        
+    }
+</script>
+
+<li>Step3: Pass the <input id='input_videoID' type='text' size=10 value='YOUTUBEID' onchange="updateLink()"></input>, 
+<input id='input_start' type='text' size=10 value='START' onchange="updateLink()"></input> and 
+<input id='input_end' type='text' size=10 value='END' onchange="updateLink()"></input> to YOUPI and let it loop that part forever</li>
 </ul>
-<a href=''>%URL?videoID=<span id='videoID'>YOUTUBEID</span>&start=<span id='start'>START</span>&end=<span id='end'></span></a>
+<a id='link' href=''>%URL?videoID=<span id='videoID'>YOUTUBEID</span>&start=<span id='start'>START</span>&end=<span id='end'></span></a>
     <hr>
 <h3>USAGE:</h3>
     <ul>
