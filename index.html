@@ -7,6 +7,8 @@
         var videoID = getParameterByName("videoID");
         var start = getSeconds(getParameterByName("start","0"));
         var end = getSeconds(getParameterByName("end","0"));
+        var mute = getParameterByName("mute");
+        var looping = false;
         if(end<start)
             end = 0;
     
@@ -38,7 +40,6 @@
                         controls: 0, 
                         autohide:1,
                         modestbranding:1,
-//                        showinfo:0,
                         origin:document.domain, 
                         disablekb :1,
                         enablejsapi :1 
@@ -53,6 +54,7 @@
                 var instructions = document.getElementById("instructions");
                 instructions.innerHTML = instructions.innerHTML.split("%URL").join(document.URL);
                 instructions.style.display="";
+                document.body.style.margin = "5px";
             }
         }
     
@@ -61,12 +63,18 @@
             if(event.data==YT.PlayerState.ENDED) {
                 playSeek(true);
             }
+            else if(event.data==YT.PlayerState.PLAYING && !looping) {
+                looping = true;
+                setInterval(playSeek,1000*(end-start),false);
+            }
         }
     
         function onPlayerReady(event) {
             document.title = player.getVideoData().title;
+            if(mute) {
+                player.mute();
+            }
             playSeek(true);
-            setInterval(playSeek,1000*(end-start),false);
         }
     
         function playSeek(force) {
@@ -81,20 +89,30 @@
 <div id="instructions" style="display:none">
     <h3>Usage:</h3>
     <ul>
-    <li>
-    <b>Loop a video:</b>
+    <li><b>Loop a video:</b>
     %URL?<font color='green'>videoID=&lt;videoID&gt;</font><br>
     <i>ex: <a href="?videoID=Kaouy4QT9vE">
         %URL?videoID=Kaouy4QT9vE</a></i><br>
     </li>
-    <li>
-    <b>Loop a video from START to END:</b>
+    <li><b>Loop a video muted:</b>
+    %URL?<font color='green'>videoID=&lt;videoID&gt;&amp;mute=1</font><br>
+    <i>ex: <a href="?videoID=06kXXJUddHQ&mute=1">
+        %URL?videoID=06kXXJUddHQ&amp;mute=1</a></i><br>
+    </li>
+    <li><b>Loop a video from START to END:</b>
     %URL?<font color='green'>video=&lt;videoID&gt;</font>&amp;<font color='green'>start=&lt;START&gt;</font>&amp;<font color='green'>end=&lt;END&gt;</font><br>
     <i>ex: <a href="?videoID=ptFt1ffCFf0&start=1:02&end=1:11">
         %URL?videoID=ptFt1ffCFf0&amp;start=1:02&amp;end=1:11</a></i>
     </li>
+    <li><b>You can use this in an iframe:</b><br>
+        <i>ex: &lt;iframe src="%URL?videoID=vbU2VXGjQj8&amplstart=4:24&amp;end=4:29.9"&gt;&lt;/iframe&gt;</i><br>
+        <iframe src="?videoID=vbU2VXGjQj8&start=4:24&end=4:29.9"></iframe>
+    </li>
     </ul>
 </div>
 
+    <h6>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Youpi</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">jacklehamster</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jacklehamster/youpi" rel="dct:source">https://github.com/jacklehamster/youpi</a>.    
+    </h6>
 </body>
 </html>
