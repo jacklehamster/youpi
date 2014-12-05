@@ -79,7 +79,7 @@ a:visited {
                 instructions.style.display="";
                 document.body.style.margin = "5px";
                 document.getElementById("demoframe").src = 
-                    "?videoID="+demoVideo+"&start="+demoStart+"&end="+demoEnd+"&mute=1";
+                    "?videoID="+demoVideo+"&start="+demoStart+"&end="+demoEnd+"&mute="+(mute=='0'?0:1);
             }
         }
     
