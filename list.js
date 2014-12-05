@@ -9,7 +9,12 @@
     //  END LIST
     
   ];
-  if(new Date().getDay()+new Date().getMonth()==24) {
+  var ref = getParameterByName(location.search,"ref");
+  if(ref) {
+    demoSearch = "?videoID="+ref + "&start="+start+"&end="+end;
+    demoSearch = demos[demos.indexOf(demoSearch)+1];
+  }
+  else if(new Date().getDay()+new Date().getMonth()==24) {
     demoSearch = demos[Math.floor(Math.random()*demos.length)];
   }
 })();
