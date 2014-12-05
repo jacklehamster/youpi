@@ -18,13 +18,13 @@ a:visited {
         var end = getSeconds(getParameterByName(location.search,"end","0"));
         var mute = getParameterByName(location.search,"mute");
         var secret = null;
-        var demoVideo = getParameterByName(location.search,"ref",getParameterByName(demoSearch,"videoID"));
-        var demoStart = getParameterByName(location.search,"start",getParameterByName(demoSearch,"start")); 
-        var demoEnd = getParameterByName(location.search,"end",getParameterByName(demoSearch,"end"));
 </script>
 <script src="list.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
+        var demoVideo = getParameterByName(location.search,"ref",getParameterByName(demoSearch,"videoID"));
+        var demoStart = getParameterByName(location.search,"start",getParameterByName(demoSearch,"start")); 
+        var demoEnd = getParameterByName(location.search,"end",getParameterByName(demoSearch,"end"));
 
         var looping = false;
         if(end<start)
