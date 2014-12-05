@@ -73,7 +73,7 @@ a:visited {
                 });
                 document.getElementById("youpi").href = "?ref="
                     +videoID+"&start="+start+"&end="+end;
-                document.getElementById("tweet").style.display = "";
+                document.getElementById("tweetbox").style.display = "";
                 document.getElementById("tweet").setAttribute("data-url",url+"?videoID="+videoID+"&start="+start+"&end="+end);
                 setTweet();
             }
@@ -124,8 +124,9 @@ a:visited {
       onmouseout="document.getElementById('youpi').style.display = 'none';">
 <div id="player"></div>
 <a id="youpi" target="_blank" href="?videoID=2VzE8Ii12Js&start=1:04.7&end=1:18.3" style="display:none;position:absolute;right:5px;bottom:10px">YOUPI</a>
-
-<a id="tweet" style="display:none;position:absolute;left:5px;bottom:10px" href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this #YOUPI video: " data-url="%URL?videoID=%DEMOVIDEO&start=%DEMOSTART&end=%DEMOEND" data-via="jacklehamster">Tweet</a>
+<div id="tweetbox" style="display:none;position:absolute;left:5px;bottom:10px">
+<a id="tweet" href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this #YOUPI video: " data-url="%URL?videoID=%DEMOVIDEO&start=%DEMOSTART&end=%DEMOEND" data-via="jacklehamster">Tweet</a>
+</div>
 <script>
 function setTweet() {
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
