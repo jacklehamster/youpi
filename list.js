@@ -9,7 +9,6 @@
     //  END LIST
     
   ];
-  console.log(ref);
   if(ref) {
     secret = "?videoID="+ref + "&start="+start+"&end="+end;
     secret = demos[demos.indexOf(secret)+1];
