@@ -5,8 +5,8 @@
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
         var videoID = getParameterByName("videoID");
-        var start = getSeconds(getParameterByName("start",0));
-        var end = getSeconds(getParameterByName("end",0));
+        var start = getSeconds(getParameterByName("start","0"));
+        var end = getSeconds(getParameterByName("end","0"));
         if(end<start)
             end = 0;
     
