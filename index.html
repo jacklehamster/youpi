@@ -4,32 +4,97 @@
     
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
+        var videoID = getParameterByName("videoID");
+        var start = getSeconds(getParameterByName("start",0));
+        var end = getSeconds(getParameterByName("end",0));
+        if(end<start)
+            end = 0;
     
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          width: '100%',
-            "height":'100%',
-          videoId: 'oswqHfHJwIk',
-playerVars: { 'controls': 0,'autohide':1,modestbranding:1,origin:document.domain, disablekb :1,enablejsapi :1 },
-            events: {
-            'onReady': onPlayerReady
-          }
-        });
-      }
-    
-        function onPlayerReady(event) {
-            playSeek();
-            console.log(setInterval(playSeek,3500));
+        function getSeconds(time) {
+            var splits = time.split(":");
+            var seconds = parseFloat(splits.pop());
+            if(splits.length)
+                seconds += parseFloat(splits.pop())*60;
+            if(splits.length)
+                seconds += parseFloat(splits.pop())*3600;
+            return seconds;
         }
     
-        function playSeek() {
-            player.seekTo(60 + 37);
+        function getParameterByName(name,defaultValue) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? defaultValue 
+            : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }    
+    
+        function onYouTubeIframeAPIReady() {
+            if(videoID) {
+                player = new YT.Player('player', {
+                    width: '100%',
+                    height:'100%',
+                    videoId: videoID,
+                    playerVars: { 
+                        controls: 0, 
+                        autohide:1,
+                        modestbranding:1,
+//                        showinfo:0,
+                        origin:document.domain, 
+                        disablekb :1,
+                        enablejsapi :1 
+                    },
+                    events: {
+                        onReady: onPlayerReady,
+                        onStateChange: onPlayerStateChange
+                    }
+                });
+            }
+            else {
+                var instructions = document.getElementById("instructions");
+                instructions.innerHTML = instructions.innerHTML.split("%URL").join(document.URL);
+                instructions.style="";
+            }
+        }
+    
+        function onPlayerStateChange(event) {
+            console.log(event.data);
+            if(event.data==YT.PlayerState.ENDED) {
+                playSeek(true);
+            }
+        }
+    
+        function onPlayerReady(event) {
+            document.title = player.getVideoData().title;
+            playSeek(true);
+            setInterval(playSeek,1000*(end-start),false);
+        }
+    
+        function playSeek(force) {
+            if(force || end && player.getPlayerState()==YT.PlayerState.PLAYING)
+                player.seekTo(start);
         }
     
 </script>
 </head>
 <body style="margin:0px; height:100%">
-    <div id="player"></div>
+<div id="player"></div>
+<div id="instructions" style="display:none">
+    <h3>Usage:</h3>
+    <ul>
+    <li>
+    <b>Loop a video:</b>
+    %URL?<font color='green'>videoID=&lt;videoID&gt;</font><br>
+    <i>ex: <a href="?videoID=Kaouy4QT9vE">
+        %URL?videoID=Kaouy4QT9vE</a></i><br>
+    </li>
+    <li>
+    <b>Loop a video from START to END:</b>
+    %URL?<font color='green'>video=&lt;videoID&gt;</font>&amp;<font color='green'>start=&lt;START&gt;</font>&amp;<font color='green'>end=&lt;END&gt;</font><br>
+    <i>ex: <a href="?videoID=ptFt1ffCFf0&start=1:02&end=1:11">
+        %URL?videoID=ptFt1ffCFf0&amp;start=1:02&amp;end=1:11</a></i>
+    </li>
+    </ul>
+</div>
 
 </body>
 </html>
