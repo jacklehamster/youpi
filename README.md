@@ -8,17 +8,17 @@ http://jacklehamster.github.io/youpi
 Usage:
 <ul>
 <li>
-<b>Loop a video:</b> http://jacklehamster.github.io/youpi/?videoID=<videoID><br>
+<b>Loop a video:</b> http://jacklehamster.github.io/youpi/?videoID=&lt;videoID&gt;<br>
 ex: http://jacklehamster.github.io/youpi/?videoID=Kaouy4QT9vE
 </li>
 
 <li>
-<b>Loop a video muted:</b> http://jacklehamster.github.io/youpi/?videoID=<videoID>&mute=1<br>
+<b>Loop a video muted:</b> http://jacklehamster.github.io/youpi/?videoID=&lt;videoID&gt;&mute=1<br>
 ex: http://jacklehamster.github.io/youpi/?videoID=06kXXJUddHQ&mute=1
 </li>
 
 <li>
-<b>Loop a video from START to END:</b> http://jacklehamster.github.io/youpi/?video=<videoID>&start=<START>&end=<END><br>
+<b>Loop a video from START to END:</b> http://jacklehamster.github.io/youpi/?video=&lt;videoID&gt;&start=&lt;START&gt;&end=&lt;END&gt;<br>
 ex: http://jacklehamster.github.io/youpi/?videoID=ptFt1ffCFf0&start=1:02&end=1:11
 </li>
 
