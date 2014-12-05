@@ -9,7 +9,6 @@
     //  END LIST
     
   ];
-  var ref = getParameterByName(location.search,"ref");
   if(ref) {
     demoSearch = "?videoID="+ref + "&start="+start+"&end="+end;
     demoSearch = demos[demos.indexOf(demoSearch)+1];
