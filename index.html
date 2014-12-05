@@ -95,7 +95,7 @@ a:visited {
     
         function onPlayerReady(event) {
             document.title = player.getVideoData().title;
-            if(mute) {
+            if(parseInt(mute)) {
                 player.mute();
             }
             playSeek(true);
