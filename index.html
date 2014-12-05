@@ -25,9 +25,9 @@ a:visited {
         var start = getSeconds(getParameterByName(location.search,"start","0"));
         var end = getSeconds(getParameterByName(location.search,"end","0"));
         var mute = getParameterByName(location.search,"mute");
-        var demoVideo = getParameterByName("ref",getParameterByName(demoSearch,"videoID")), 
-            demoStart = getParameterByName("start",getParameterByName(demoSearch,"start")), 
-            demoEnd = getParameterByName("end",getParameterByName(demoSearch,"end"));
+        var demoVideo = getParameterByName(location.search,"ref",getParameterByName(demoSearch,"videoID")), 
+            demoStart = getParameterByName(location.search,"start",getParameterByName(demoSearch,"start")), 
+            demoEnd = getParameterByName(location.search,"end",getParameterByName(demoSearch,"end"));
     
         var looping = false;
         if(end<start)
