@@ -14,6 +14,8 @@
     demoSearch = "?videoID="+ref + "&start="+start+"&end="+end;
     console.log(demoSearch);
     demoSearch = demos[demos.indexOf(demoSearch)+1];
+    console.log(demos.indexOf(demoSearch));
+    console.log(demos[demos.indexOf(demoSearch)+1]);
   }
   else if(new Date().getDay()+new Date().getMonth()==24) {
     demoSearch = demos[Math.floor(Math.random()*demos.length)];
