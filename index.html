@@ -73,7 +73,6 @@ a:visited {
                 });
                 document.getElementById("youpi").href = "?ref="
                     +videoID+"&start="+start+"&end="+end;
-                document.getElementById("tweetbox").style.display = "";
                 document.getElementById("tweet").setAttribute("data-url",url+"?videoID="+videoID+"&start="+start+"&end="+end);
                 setTweet();
             }
@@ -120,8 +119,8 @@ a:visited {
 </script>
 </head>
 <body style="margin:0px; height:100%" 
-      onmouseover="document.getElementById('youpi').style.display = '';" 
-      onmouseout="document.getElementById('youpi').style.display = 'none';">
+      onmouseover="document.getElementById('youpi').style.display = ''; document.getElementById('tweetbox').style.display = '';" 
+      onmouseout="document.getElementById('youpi').style.display = 'none'; document.getElementById('tweetbox').style.display = 'none';">
 <div id="player"></div>
 <a id="youpi" target="_blank" href="?videoID=2VzE8Ii12Js&start=1:04.7&end=1:18.3" style="display:none;position:absolute;right:5px;bottom:10px">YOUPI</a>
 <div id="tweetbox" style="display:none;position:absolute;left:5px;bottom:10px">
