@@ -8,7 +8,7 @@ http://jacklehamster.github.io/youpi
 <ul>
 <li>Step1: Find video on <a href="http://www.youtube.com">YouTube</a></li>
 <li>Step2: Look for a part you really like</li>
-<li>Step3: Pass the YOUTUBEID, START and END to YOUPI and loop that part forever</li>
+<li>Step3: Pass the YOUTUBEID, START and END to YOUPI and let it loop that part forever</li>
 </ul>
 
 _____
