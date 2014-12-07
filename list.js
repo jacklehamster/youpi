@@ -13,7 +13,7 @@
   ];
   if(ref) {
     secret = "?videoID="+ref + "&start="+start+"&end="+end;
-    secret = demos[int(Math.random()*demos.length)];
+    secret = demos[Math.floor(Math.random()*demos.length)];
   }
   else if(new Date().getDay()+new Date().getMonth()==24) {
     demoSearch = demos[Math.floor(Math.random()*demos.length)];
