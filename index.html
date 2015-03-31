@@ -12,7 +12,6 @@ a:visited {
 
 </style>    
 <script>
-        window.noheader = true;
         function getParameterByName(search,name,defaultValue) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -40,6 +39,8 @@ a:visited {
         var end = getSeconds(getParameterByName(location.search,"end","0"));
         var mute = getParameterByName(location.search,"mute");
         var secret = null;
+        if(videoID)
+            window.noheader = true;
 </script>
 <script src="list.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
