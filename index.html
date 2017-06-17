@@ -55,9 +55,10 @@ a:visited {
         if(end<start)
             end = 0;
     
+        var player;
         function onYouTubeIframeAPIReady() {
             if(videoID) {
-                player = new YT.Player('player', {
+                player = new YT.Player('video-player', {
                     width: '100%',
                     height:'100%',
                     videoId: videoID,
@@ -120,7 +121,6 @@ a:visited {
             if(force || end && player.getPlayerState()==YT.PlayerState.PLAYING)
                 player.seekTo(start);
         }
-    youtubePlayer = player;
     
 </script>
 </head>
