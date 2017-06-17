@@ -13,6 +13,15 @@ a:visited {
 </style>    
 <script>
         function getParameterByName(search,name,defaultValue) {
+            if(name.indexOf("|")>=0) {
+                var names = name.split("|");
+                for(var i=0;i<names.length;i++) {
+                    var param = getParameterByName(search, names[i]);
+                    if(param) return param;
+                }
+                return defaultValue;
+            }
+
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
                 results = regex.exec(search);
@@ -33,11 +42,12 @@ a:visited {
     
         var demoSearch = "?videoID=2VzE8Ii12Js&start=1:04.7&end=1:18.3";
         var url = document.URL.split("?")[0];
-        var videoID = getParameterByName(location.search,"videoID");
-        var ref = getParameterByName(location.search,"ref");
-        var start = getSeconds(getParameterByName(location.search,"start","0"));
-        var end = getSeconds(getParameterByName(location.search,"end","0"));
-        var mute = getParameterByName(location.search,"mute");
+        var videoID = getParameterByName(location.search,"videoID|v");
+        var ref = getParameterByName(location.search,"ref|r");
+        var start = getSeconds(getParameterByName(location.search,"start|s","0"));
+        var end = getSeconds(getParameterByName(location.search,"end|e","0"));
+        var mute = getParameterByName(location.search,"mute",false);
+        var mouseEnabled = getParameterByName(location.search,"mouse",false);
         var secret = null;
         if(videoID)
             window.noheader = true;
@@ -45,16 +55,15 @@ a:visited {
 <script src="list.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-        var demoVideo = getParameterByName(location.search,"ref",getParameterByName(demoSearch,"videoID"));
-        var demoStart = getParameterByName(location.search,"start",getParameterByName(demoSearch,"start")); 
-        var demoEnd = getParameterByName(location.search,"end",getParameterByName(demoSearch,"end"));
-        var demoURL = url+"?videoID="+demoVideo+"&start="+demoStart+"&demoEnd="+demoEnd;
+        var demoVideo = getParameterByName(location.search,"ref|r",getParameterByName(demoSearch,"videoID|v"));
+        var demoStart = getParameterByName(location.search,"start|s",getParameterByName(demoSearch,"start|s"));
+        var demoEnd = getParameterByName(location.search,"end|e",getParameterByName(demoSearch,"end|e"));
 
 
         var looping = false;
         if(end<start)
             end = 0;
-    
+
         var player;
         function onYouTubeIframeAPIReady() {
             if(videoID) {
@@ -78,6 +87,7 @@ a:visited {
                 document.getElementById("youpi").href = "?ref="
                     +videoID+"&start="+start+"&end="+end;
                 document.getElementById("tweet").setAttribute("data-url",url+"?videoID="+videoID+"&start="+start+"&end="+end);
+                document.getElementById("demoframe").style.display = 'none';
                 setTweet();
             }
             else {
@@ -97,18 +107,37 @@ a:visited {
                 document.getElementById("tweetbox").style.display="none";
                 setTweet();
             }
+
+            if(!mouseEnabled) {
+                document.getElementById('video-player').style.pointerEvents = 'none';
+            }
         }
     
         function onPlayerStateChange(event) {
-            if(event.data==YT.PlayerState.ENDED) {
-                playSeek(true);
-            }
-            else if(event.data==YT.PlayerState.PLAYING && !looping) {
+            if(event.data==YT.PlayerState.PLAYING && !looping) {
+                if(!end) {
+                    end = player.getDuration();
+                }
                 looping = true;
-                setInterval(playSeek,1000*(end-start),false);
+                loop();
+                console.log("HERE");
             }
         }
-    
+
+        var seeking = false;
+        function loop() {
+            if(player.getCurrentTime()>end && !seeking) {
+                seeking = true;
+                console.log("SEEK");
+                playSeek(false);
+                console.log(player.getCurrentTime());
+            }
+            if(seeking && player.getCurrentTime()<end) {
+                seeking = false;
+            }
+            requestAnimationFrame(loop);
+        }
+
         function onPlayerReady(event) {
             document.title = player.getVideoData().title + " played over and over and over";
             if(parseInt(mute)) {
@@ -121,12 +150,13 @@ a:visited {
             if(force || end && player.getPlayerState()==YT.PlayerState.PLAYING)
                 player.seekTo(start);
         }
-    
+
+
 </script>
 </head>
-<body style="margin:0px; height:100%" 
-      onmouseover="document.getElementById('youpi').style.display = '';if(videoID) document.getElementById('tweetbox').style.display = '';" 
-      onmouseout="document.getElementById('youpi').style.display = 'none';if(videoID) document.getElementById('tweetbox').style.display = 'none';">
+<body style="margin:0; height:100%"
+      onmouseover="if(!mouseEnabled) return;document.getElementById('youpi').style.display = '';if(videoID) document.getElementById('tweetbox').style.display = '';"
+      onmouseout="if(!mouseEnabled) return;document.getElementById('youpi').style.display = 'none';if(videoID) document.getElementById('tweetbox').style.display = 'none';">
 <div id="video-player"></div>
 <a id="youpi" target="_top" href="?videoID=2VzE8Ii12Js&start=1:04.7&end=1:18.3" style="display:none;position:absolute;right:5px;bottom:10px">YOUPI</a>
 <div id="tweetbox" style="display:none;position:absolute;left:5px;bottom:10px">
