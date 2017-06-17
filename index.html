@@ -158,8 +158,8 @@ a:visited {
 </script>
 </head>
 <body style="margin:0; height:100%; background-color: snow"
-      onmouseover="if(!mouseEnabled) return;document.getElementById('youpi').style.display = '';if(videoID) document.getElementById('tweetbox').style.display = '';"
-      onmouseout="if(!mouseEnabled) return;document.getElementById('youpi').style.display = 'none';if(videoID) document.getElementById('tweetbox').style.display = 'none';">
+      onmouseover="if(!mouseEnabled && parent!==window) return;document.getElementById('youpi').style.display = '';if(videoID) document.getElementById('tweetbox').style.display = '';"
+      onmouseout="if(!mouseEnabled && parent!==window) return;document.getElementById('youpi').style.display = 'none';if(videoID) document.getElementById('tweetbox').style.display = 'none';">
 <div id="video-player"></div>
 <a id="youpi" target="_top" href="?videoID=2VzE8Ii12Js&start=1:04.7&end=1:18.3" style="display:none;position:absolute;right:5px;bottom:10px">YOUPI</a>
 <div id="tweetbox" style="display:none;position:absolute;left:5px;bottom:10px">
