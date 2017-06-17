@@ -46,7 +46,7 @@ a:visited {
         var ref = getParameterByName(location.search,"ref|r");
         var start = getSeconds(getParameterByName(location.search,"start|s","0"));
         var end = getSeconds(getParameterByName(location.search,"end|e","0"));
-        var mute = getParameterByName(location.search,"mute",false);
+        var mute = getParameterByName(location.search,"mute");
         var mouseEnabled = getParameterByName(location.search,"mouse",!videoID);
         var secret = null;
         if(videoID)
