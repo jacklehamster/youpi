@@ -88,6 +88,8 @@ a:visited {
                     +videoID+"&start="+start+"&end="+end;
                 document.getElementById("tweet").setAttribute("data-url",url+"?videoID="+videoID+"&start="+start+"&end="+end);
                 document.getElementById("demoarea").style.display = 'none';
+                document.body.style.overflow='hidden';
+                document.body.scrolling = 'no';
                 setTweet();
             }
             else {
