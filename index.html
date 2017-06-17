@@ -47,7 +47,7 @@ a:visited {
         var start = getSeconds(getParameterByName(location.search,"start|s","0"));
         var end = getSeconds(getParameterByName(location.search,"end|e","0"));
         var mute = getParameterByName(location.search,"mute",false);
-        var mouseEnabled = getParameterByName(location.search,"mouse",false);
+        var mouseEnabled = getParameterByName(location.search,"mouse",!videoID);
         var secret = null;
         if(videoID)
             window.noheader = true;
@@ -87,7 +87,7 @@ a:visited {
                 document.getElementById("youpi").href = "?ref="
                     +videoID+"&start="+start+"&end="+end;
                 document.getElementById("tweet").setAttribute("data-url",url+"?videoID="+videoID+"&start="+start+"&end="+end);
-                document.getElementById("demoframe").style.display = 'none';
+                document.getElementById("demoarea").style.display = 'none';
                 setTweet();
             }
             else {
@@ -102,6 +102,8 @@ a:visited {
                 document.body.style.margin = "5px";
                 document.getElementById("demoframe").src = 
                     "?videoID="+demoVideo+"&start="+demoStart+"&end="+demoEnd+"&mute="+(mute=='0'?0:1);
+                document.getElementById("demourl").href =
+                    "?videoID="+demoVideo+"&start="+demoStart+"&end="+demoEnd;
                 if(secret)
                     document.getElementById("youpi").href = secret;
                 document.getElementById("tweetbox").style.display="none";
@@ -120,7 +122,6 @@ a:visited {
                 }
                 looping = true;
                 loop();
-                console.log("HERE");
             }
         }
 
@@ -128,9 +129,7 @@ a:visited {
         function loop() {
             if(player.getCurrentTime()>end && !seeking) {
                 seeking = true;
-                console.log("SEEK");
                 playSeek(false);
-                console.log(player.getCurrentTime());
             }
             if(seeking && player.getCurrentTime()<end) {
                 seeking = false;
@@ -154,7 +153,7 @@ a:visited {
 
 </script>
 </head>
-<body style="margin:0; height:100%"
+<body style="margin:0; height:100%; background-color: snow"
       onmouseover="if(!mouseEnabled) return;document.getElementById('youpi').style.display = '';if(videoID) document.getElementById('tweetbox').style.display = '';"
       onmouseout="if(!mouseEnabled) return;document.getElementById('youpi').style.display = 'none';if(videoID) document.getElementById('tweetbox').style.display = 'none';">
 <div id="video-player"></div>
@@ -169,8 +168,13 @@ function setTweet() {
 }
 </script>
 
-
-<center><iframe scrolling="no" id="demoframe" width=500 height=300 style="overflow:hidden"></iframe></center>
+<div id="demoarea">
+    <center>
+        <iframe scrolling="no" id="demoframe" width=500 height=300 style="overflow:hidden"></iframe>
+        <br>
+        <a id="demourl" href="">Play this full-screen</a>
+    </center>
+</div>
 
 
 <div id="instructions" style="display:none;">
